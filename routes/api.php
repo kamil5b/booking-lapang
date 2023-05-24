@@ -3,6 +3,11 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\productController;
+use App\Http\Controllers\orderController;
+use App\Http\Controllers\otherController;
+use App\Http\Controllers\adminController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,3 +25,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/login', 'App\Http\Controllers\loginController@loginAPI');
 Route::post('/register', 'App\Http\Controllers\loginController@registerAPI');
+Route::get('/order/{id}',function ($id) {
+    return orderController::APIGet($id);
+});
+Route::get('/lapang',function () {
+    return productController::APIGet();
+});
+Route::get('/order/delete/{id}',function ($id) {
+    return orderController::APIDelete($id);
+});
+Route::post('/order',function (Request $request) {
+    return orderController::APIadd($request);
+});

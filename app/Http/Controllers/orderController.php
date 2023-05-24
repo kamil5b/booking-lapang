@@ -75,21 +75,104 @@ class orderController extends Controller
     }
 
     public static function APIGet($id){
-        $data = Order::where('orang_id')->get();
+        $data = Order::where('orang_id',$id)->get();
         return response()->json([
             'success' => true,
             'data' => $data
         ],200);
     }
-
+    public static function APIDelete($id){
+        Order::destroy($id);
+        return response()->json([
+            'success' => true
+        ],200);
+    }
     public static function delete($id){
         Order::destroy($id);
         return redirect('/jadwalku');
     }
-    public static function add_order(Request $request){
-
+    public static function APIadd(Request $request){
+        error_log("masuk");
+        $add_time = $request->durasi * 60;
+        error_log("0");
+        $endTime = strtotime("+{$add_time} minutes", strtotime($request->waktu));
+        error_log("0");
+        $end_time = date('H:i', $endTime);
+        
+        error_log("0");
+        $file = $request->file('image');
+        error_log("0");
+        error_log($request->hasFile('image'));
+        $imageName = time().'.'.$file->extension();
+        error_log($imageName);
+        $bool_order = Order::where(
+            'lapang_id',$request->lapang_id
+            )->whereDate('tanggal', '=', $request->tanggal
+            )->whereTime('waktu', '<=', $end_time)->doesntExist();
+        error_log('$bool_order :'.$bool_order);
+        if($bool_order){
+            error_log("11");
+            $file->move(public_path('ktm'), $imageName);
+            error_log("11");
+            error_log($request->orang_id);
+            error_log($request->lapang_id);
+            error_log($request->tanggal);
+            error_log($request->waktu);
+            error_log($request->durasi);
+            error_log($end_time);
+            Order::create([
+                'orang_id' => $request->orang_id,
+                'lapang_id' => $request->lapang_id,
+                'tanggal' => $request->tanggal,
+                'waktu' => $request->waktu,
+                'durasi'=> $request->durasi,
+                'end_time' => $end_time,
+                'ktm'=>$imageName
+            ]);
+            
+        error_log("success");
+            return response()->json([
+                'success' => true
+            ],200);
+        }
         
 
+        $bool_order_1 = Order::where(
+            'lapang_id',$request->lapang_id
+            )->whereDate('tanggal', '=', $request->tanggal
+            )->whereTime('waktu', '>=', $end_time)->doesntExist();
+        error_log('$bool_order_1 :'.$bool_order_1);
+        $bool_order_2 = Order::where(
+            'lapang_id',$request->lapang_id
+            )->whereDate('tanggal', '=', $request->tanggal
+            )->whereDate('waktu', '>=', $request->waktu
+            )->whereDate('end_time', '<=', $end_time)->doesntExist();
+        
+        //$end_time = $request->waktu + $request->durasi * (60 * 60);
+        if($bool_order_1 && $bool_order_2){
+            error_log("2");
+            $file->move(public_path('ktm'), $imageName);
+            error_log("2");
+            Order::create([
+                'orang_id' => $request->orang_id,
+                'lapang_id' => $request->lapang_id,
+                'tanggal' => $request->tanggal,
+                'waktu' => $request->waktu,
+                'durasi'=> $request->durasi,
+                'end_time' => $end_time,
+                'ktm'=>$imageName
+            ]);
+            error_log("success");
+            return response()->json([
+                'success' => true
+            ],200);
+        }
+        error_log("gagal");
+        return response()->json([
+            'success' => false
+        ],401);
+    }
+    public static function add_order(Request $request){
         $imageName = time().'.'.$request->ktm->extension();
         $add_time = $request->durasi * 60;
         $endTime = strtotime("+{$add_time} minutes", strtotime($request->waktu));

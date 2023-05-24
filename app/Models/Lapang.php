@@ -16,6 +16,8 @@ class Lapang extends Model
     */
     protected $fillable = [
         'name',
-        'category'
+        'category',
+        'lat',
+        'lang'
     ];
 }

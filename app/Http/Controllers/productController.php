@@ -30,6 +30,14 @@ class productController extends Controller
             "data"=>$data
         ]);
     }
+    
+    public static function APIGet(){
+        $data = Lapang::all();
+        return response()->json([
+            'success' => true,
+            'data' => $data
+        ],200);
+    }
 
     public static function add()
     {
@@ -44,7 +52,9 @@ class productController extends Controller
             'page'=>'lapang',
             'id'=>$id,
             'name'=>$lapang->name,
-            'category'=>$lapang->category
+            'category'=>$lapang->category,
+            'lat'=>$lapang->lat,
+            'lng'=>$lapang->lng
         ]);
     }
 
@@ -57,7 +67,9 @@ class productController extends Controller
         {
             Lapang::create([
                 'name' => $request->name,
-                'category' => $request->category
+                'category' => $request->category,
+                'lat'=>(float) $lapang->lat,
+                'lng'=>(float) $lapang->lng
             ]);
         }
         catch(\Illuminate\Database\QueryException $e)

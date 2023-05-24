@@ -91,15 +91,20 @@ class loginController extends Controller
     }
  */
     public function loginAPI(){
+        error_log("masuk login");
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
+            error_log("masuk");
             $user = Auth::user();
             $success['token'] = $user->createToken('appToken')->accessToken;
+            error_log("success");
             return response()->json([
                 'success' => true,
                 'token' => $success,
                 'user' => $user,
-            ]);
+            ],200);
         } else{
+            
+            error_log("gagal");
             return response()->json([
                     'success' => false,
                     'message' => 'Invalid Email or Password',
@@ -112,10 +117,11 @@ class loginController extends Controller
     public function registerAPI(Request $request){
         if($request->password == $request->password2){
             $validatedData = $request->validate([
-                'name' => 'required|max:255',
-                'nomor_hp' => 'required',
-                'password' => 'required',
-                'role' => 'required'
+                'email' => 'required|email:rfc,dns',
+                'name' => 'required',
+                'nim' => 'required',
+                'password' => 'required|min:8',
+                'pass2' => 'required|same:password'
             ]);
     
             $validatedData['password'] = Hash::make($validatedData['password']);
@@ -150,7 +156,7 @@ class loginController extends Controller
         return response()->json([
             'success' => false,
             'message' => $validator->errors(),
-           ], 401);
+           ], 401,200);
 
     }
 

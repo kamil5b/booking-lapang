@@ -26,6 +26,18 @@
             </select>
         </div>
     </div>
+    <div class="row">
+        <div class="col" style="text-align: left;">
+            <div class="row" style="font-weight: bold;">
+                <div class="col text-start"><label class="col-form-label" style="font-size: 24px;font-family: Inter, sans-serif;">Latitude</label></div>
+            </div><input class="form-control-lg" type="text" style="text-align: left;" name="lat">
+        </div>
+        <div class="col" style="text-align: left;">
+            <div class="row" style="font-weight: bold;">
+                <div class="col text-start"><label class="col-form-label" style="font-size: 24px;font-family: Inter, sans-serif;">Longitude</label></div>
+            </div><input class="form-control-lg" type="text" style="text-align: left;" name="lng">
+        </div>
+    </div>
     <div class="row" style="margin-top: 25px;">
         <div class="col"><button class="btn btn-primary" type="input" style="font-family: Inter, sans-serif;font-size: 24px;background: #00b728;color: rgb(0,0,0);">Buat</button></div>
     </div>
