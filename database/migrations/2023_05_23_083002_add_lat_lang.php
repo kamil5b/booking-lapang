@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('lapangs', function (Blueprint $table) {
-            $table->float('lat', 10, 6);
-            $table->float('lng', 10, 6);
+            $table->float('lat', 20, 15);
+            $table->float('lng', 20, 15);
         });
     }
 

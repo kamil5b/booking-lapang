@@ -14,7 +14,7 @@ return new class extends Migration
         
         Schema::table('orders', function (Blueprint $table) {
             $table->unsignedBigInteger('lapang_id');
-            $table->foreign('lapang_id')->references('id')->on('lapang');
+            $table->foreign('lapang_id')->references('id')->on('lapangs');
         });
     }
 
