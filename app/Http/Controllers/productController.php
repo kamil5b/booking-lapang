@@ -21,8 +21,10 @@ class productController extends Controller
             $tmp = [
                 'id'=>$p->id,
                 'name'=>$p->name,
-                'category'=>$p->category
+                'category'=>$p->category,
+                'pic'=>$p->pic
             ];
+            
             array_push($data,$tmp);
         }
         return view('produk', [
@@ -63,20 +65,32 @@ class productController extends Controller
     //ACTIONS
 
     public static function add_lapang(Request $request){
-        try
+        /*try
         {
+            $imageName = time().'.'.$request->pic->extension();
+            $request->pic->move(public_path('pic'), $imageName);
             Lapang::create([
                 'name' => $request->name,
                 'category' => $request->category,
-                'lat'=>(float) $lapang->lat,
-                'lng'=>(float) $lapang->lng
+                'lat'=> $request->lat,
+                'lng'=> $request->lng,
+                'pic' => $imageName
             ]);
         }
         catch(\Illuminate\Database\QueryException $e)
         {
             return redirect('/admin/lapang/add');
-        }
-        
+        }*/
+        $imageName = time().'.'.$request->pic->extension();
+        error_log($request->lng);
+            $request->pic->move(public_path('pic'), $imageName);
+            Lapang::create([
+                'name' => $request->name,
+                'category' => $request->category,
+                'lat'=> $request->lat,
+                'lng'=> $request->lng,
+                'pic' => $imageName
+            ]);
         // alihkan halaman ke halaman sebelumnya
         return redirect('/admin/lapang');
     }
@@ -85,6 +99,8 @@ class productController extends Controller
         $lapang = Lapang::find($request->id);
         $lapang->name = $request->name;
         $lapang->category = $request->category;
+        $lapang->lat = $request->lat;
+        $lapang->lng = $request->lng;
         $lapang->save();
         // alihkan halaman ke halaman sebelumnya
         return redirect('/admin/lapang');

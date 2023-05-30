@@ -9,7 +9,15 @@
                     <div class="col-auto">
                         <div class="text-center" style="background: #ffffff;border-radius: 40px;padding: 35px;">
                             <div class="row">
-                                <div class="col"><img class="rounded img-fluid" src="{{ asset('images/Rectangle%2026.png') }}"></div>
+                                <div class="col">
+                                    <?php $pic = 'pic/'.$row['pic']; 
+                                        if($row['pic'] == ""){
+                                            $pic = 'images/Rectangle%2026.png';
+                                        }
+                                    ?>
+                                    <img class="rounded img-fluid" src="{{ asset($pic) }}" style="max-height: 150px">
+                                    
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col">

@@ -18,6 +18,7 @@ class Lapang extends Model
         'name',
         'category',
         'lat',
-        'lang'
+        'lng',
+        'pic'
     ];
 }

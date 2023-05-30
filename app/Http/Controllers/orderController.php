@@ -29,7 +29,8 @@ class orderController extends Controller
             "id"=>$id,
             "user_id"=>Auth::user()->id,
             "category" => $pas->category,
-            "name" => $pas->name
+            "name" => $pas->name,
+            "pic"=>$pas->pic
         ]);
     }
     

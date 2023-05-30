@@ -1,7 +1,7 @@
 @extends('admin.main')
 
 @section('body')
-<form method="post" action="/admin/lapang/add" class="text-center" style="background: #e5e3e3;border-radius: 40px;padding: 35px;margin-bottom: 15px;margin-top: 15px;">
+<form enctype="multipart/form-data" method="post" action="/admin/lapang/add" class="text-center" style="background: #e5e3e3;border-radius: 40px;padding: 35px;margin-bottom: 15px;margin-top: 15px;">
     @csrf
     <div class="row">
         <div class="col"><img class="img-fluid" src="{{ asset('images/locate1.png') }}" width="160" height="235" style="margin: -35px;"></div>
@@ -36,6 +36,13 @@
             <div class="row" style="font-weight: bold;">
                 <div class="col text-start"><label class="col-form-label" style="font-size: 24px;font-family: Inter, sans-serif;">Longitude</label></div>
             </div><input class="form-control-lg" type="text" style="text-align: left;" name="lng">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row" style="font-weight: bold;">
+                <div class="col text-start"><label class="col-form-label" style="font-size: 24px;font-family: Inter, sans-serif;">Gambar</label></div>
+            </div><input type="file" name="pic" class="form-control-lg">
         </div>
     </div>
     <div class="row" style="margin-top: 25px;">
