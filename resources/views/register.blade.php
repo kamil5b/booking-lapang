@@ -22,7 +22,7 @@
                                 <input class="form-control" type="text" inputmode="email" required="" name="email"></div>
                         </div>
                         <div class="row">
-                            <div class="col"><label class="form-label" style="font-size: 12px;font-family: Poppins, sans-serif;">Nomor Handphone</label>
+                            <div class="col"><label class="form-label" style="font-size: 12px;font-family: Poppins, sans-serif;">NIM</label>
                                 <input class="form-control" type="text" inputmode="tel" required="" name="nim"></div>
                         </div>
                         <div class="row">
