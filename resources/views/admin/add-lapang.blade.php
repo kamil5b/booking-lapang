@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col" style="text-align: left;">
             <div class="row" style="font-weight: bold;">
                 <div class="col text-start"><label class="col-form-label" style="font-size: 24px;font-family: Inter, sans-serif;">Tipe</label></div>
             </div>
@@ -39,13 +39,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col" style="text-align: left;">
             <div class="row" style="font-weight: bold;">
                 <div class="col text-start"><label class="col-form-label" style="font-size: 24px;font-family: Inter, sans-serif;">Gambar</label></div>
             </div><input type="file" name="pic" class="form-control-lg">
         </div>
     </div>
-    <div class="row" style="margin-top: 25px;">
+    <div class="row" style="margin-top: 25px; text-align: left;">
         <div class="col"><button class="btn btn-primary" type="input" style="font-family: Inter, sans-serif;font-size: 24px;background: #00b728;color: rgb(0,0,0);">Buat</button></div>
     </div>
 </form>
