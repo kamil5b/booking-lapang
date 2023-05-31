@@ -28,6 +28,16 @@
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span style="color: rgb(255,255,255);font-size: 24px;font-family: Poppins, sans-serif;font-weight: bold;">Booking Lapang</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon" style="background: rgba(255,255,255,0.68);border-radius: 20px;"></span></button>
             <div class="collapse navbar-collapse" id="navcol-2">
                 <ul class="navbar-nav ms-auto">
+                    @if ($page == 'products')
+                        <li class="nav-item"><a class="nav-link" href="/products" style="color: rgb(255,255,255);font-size: 20px;font-family: Poppins, sans-serif;font-weight: bold;text-decoration: underline;">Produk</a></li>
+                    @else
+                        <li class="nav-item"><a class="nav-link" href="/products" style="color: rgba(255,255,255,0.55);font-size: 20px;font-family: Poppins, sans-serif;font-weight: bold;">Produk</a></li>
+                    @endif
+                    @if ($page == 'jadwalku')
+                    <li class="nav-item"><a class="nav-link" href="/jadwalku" style="color: rgb(255,255,255);font-size: 20px;font-family: Poppins, sans-serif;font-weight: bold;text-decoration: underline;">JadwalKu</a></li>
+                    @else
+                    <li class="nav-item"><a class="nav-link" href="/jadwalku" style="color: rgba(255,255,255,0.55);font-size: 20px;font-family: Poppins, sans-serif;font-weight: bold;">JadwalKu</a></li>
+                    @endif
                     <li class="nav-item">
                     <a class="nav-link" href="/logout" style="color: rgb(255,255,255);font-size: 20px;font-family: Poppins, sans-serif;font-weight: bold;">
                         Logout

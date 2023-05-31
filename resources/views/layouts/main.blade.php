@@ -33,12 +33,6 @@
                     @else
                         <li class="nav-item"><a class="nav-link" href="/products" style="color: rgba(255,255,255,0.55);font-size: 20px;font-family: Poppins, sans-serif;font-weight: bold;">Produk</a></li>
                     @endif
-                    @if ($page == 'alamat')
-                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255);font-size: 20px;font-family: Poppins, sans-serif;font-weight: bold;text-decoration: underline;">Alamat</a></li>
-                    @else
-                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgba(255,255,255,0.55);font-size: 20px;font-family: Poppins, sans-serif;font-weight: bold;">Alamat</a></li>
-                    @endif
-                    
                     @if ($page == 'jadwalku')
                     <li class="nav-item"><a class="nav-link" href="/jadwalku" style="color: rgb(255,255,255);font-size: 20px;font-family: Poppins, sans-serif;font-weight: bold;text-decoration: underline;">JadwalKu</a></li>
                     @else
