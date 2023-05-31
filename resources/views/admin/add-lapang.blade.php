@@ -1,7 +1,7 @@
 @extends('admin.main')
 
 @section('body')
-<form enctype="multipart/form-data" method="post" action="/admin/lapang/add" class="text-center" style="background: #e5e3e3;border-radius: 40px;padding: 35px;margin-bottom: 15px;margin-top: 15px;">
+<form enctype="multipart/form-data" method="post" action="/admin/lapang/add" class="text-center" style="background: #e5e3e3;border-radius: 40px;padding: 35px;margin-bottom: 15px;margin-top: 15px; width: 650px">
     @csrf
     <div class="row">
         <div class="col"><img class="img-fluid" src="{{ asset('images/locate1.png') }}" width="160" height="235" style="margin: -35px;"></div>
